@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Todo List</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>📝 Simple Todo List</h1>
+            <p>シンプルで使いやすいタスク管理</p>
+        </header>
+
+        <main class="app-main">
+            <div class="input-section">
+                <div class="input-row">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        placeholder="新しいタスクを入力してください..."
+                        autocomplete="off"
+                    >
+                    <button id="addBtn" class="add-btn">
+                        <span>➕ 追加</span>
+                    </button>
+                </div>
+                
+                <div class="task-options">
+                    <div class="option-group">
+                        <label for="prioritySelect">優先度:</label>
+                        <select id="prioritySelect" class="priority-select">
+                            <option value="medium">🟡 中</option>
+                            <option value="high">🔴 高</option>
+                            <option value="low">🟢 低</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="dueDateInput">期限:</label>
+                        <input type="date" id="dueDateInput" class="date-input">
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="categorySelect">カテゴリ:</label>
+                        <select id="categorySelect" class="category-select">
+                            <option value="">カテゴリなし</option>
+                            <option value="work">💼 仕事</option>
+                            <option value="personal">🏠 個人</option>
+                            <option value="shopping">🛒 買い物</option>
+                            <option value="health">💪 健康</option>
+                            <option value="study">📚 勉強</option>
+                            <option value="custom">✏️ カスタム</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group" id="customCategoryGroup" style="display: none;">
+                        <label for="customCategoryInput">カスタムカテゴリ:</label>
+                        <input type="text" id="customCategoryInput" placeholder="カテゴリ名を入力..." class="custom-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="search-group">
+                    <input type="text" id="searchInput" placeholder="🔍 タスクを検索..." class="search-input">
+                </div>
+                
+                <div class="filter-group">
+                    <select id="priorityFilter" class="filter-select">
+                        <option value="">全ての優先度</option>
+                        <option value="high">🔴 高優先度のみ</option>
+                        <option value="medium">🟡 中優先度のみ</option>
+                        <option value="low">🟢 低優先度のみ</option>
+                    </select>
+                    
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">全てのカテゴリ</option>
+                        <option value="work">💼 仕事</option>
+                        <option value="personal">🏠 個人</option>
+                        <option value="shopping">🛒 買い物</option>
+                        <option value="health">💪 健康</option>
+                        <option value="study">📚 勉強</option>
+                    </select>
+                    
+                    <select id="dueDateFilter" class="filter-select">
+                        <option value="">全ての期限</option>
+                        <option value="overdue">⚠️ 期限切れ</option>
+                        <option value="today">📅 今日まで</option>
+                        <option value="week">📊 今週まで</option>
+                        <option value="nodate">📝 期限なし</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="todo-section">
+                <div class="todo-stats">
+                    <span id="totalTasks">全タスク: 0</span>
+                    <span id="completedTasks">完了: 0</span>
+                    <span id="pendingTasks">未完了: 0</span>
+                </div>
+
+                <div class="todo-list-container">
+                    <ul id="todoList" class="todo-list">
+                        <!-- タスクがここに動的に追加されます -->
+                    </ul>
+                    
+                    <div id="emptyState" class="empty-state">
+                        <div class="empty-icon">📋</div>
+                        <h3>まだタスクがありません</h3>
+                        <p>上の入力欄から新しいタスクを追加してみましょう</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions-section">
+                <button id="clearCompleted" class="action-btn secondary">
+                    🗑️ 完了済みを削除
+                </button>
+                <button id="clearAll" class="action-btn danger">
+                    🔄 すべてクリア
+                </button>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>💡 Tips: タスクをダブルクリックで編集できます</p>
+        </footer>
+    </div>
+
+    <script src="src/app.js"></script>
+</body>
+</html>
